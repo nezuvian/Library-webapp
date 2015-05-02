@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity Book.
+    -->
+    <changeSet id="20150502121715" author="jhipster">
+        <createTable tableName="BOOK">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)"/>
+            <column name="publisher" type="varchar(255)"/>
+            <column name="date" type="timestamp"/>
+            <column name="language" type="varchar(255)"/>
+            <column name="author_id" type="bigint"/>
+        </createTable>
+        <dropDefaultValue tableName="BOOK" columnName="date" columnDataType="datetime"/>
+
+        
+        <addForeignKeyConstraint baseColumnNames="author_id"
+                                 baseTableName="BOOK"
+                                 constraintName="fk_book_author_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="AUTHOR"/>
+
+    </changeSet>
+</databaseChangeLog>

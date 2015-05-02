@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span translate="libappApp.book.detail.title">Book</span> {{book.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="libappApp.book.title">Title</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{book.title}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="libappApp.book.publisher">Publisher</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{book.publisher}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="libappApp.book.date">Date</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{book.date}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="libappApp.book.language">Language</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{book.language}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="libappApp.book.author">author</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{book.author.name}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="book"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

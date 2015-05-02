@@ -1,0 +1,20 @@
+{
+  "generator-jhipster": {
+    "baseName": "libapp",
+    "packageName": "top2lz.libapp",
+    "packageFolder": "top2lz/libapp",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "no",
+    "useCompass": true,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "rememberMeKey": "cdc3608bf8f71fe4d442baee08f39af1aa5959f9"
+  }
+}

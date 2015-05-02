@@ -1,0 +1,62 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "author",
+            "relationshipNameCapitalized": "Author",
+            "relationshipFieldName": "author",
+            "otherEntityName": "author",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Author",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Title",
+            "fieldNameUnderscored": "title",
+            "fieldInJavaBeanMethod": "Title",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "publisher",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Publisher",
+            "fieldNameUnderscored": "publisher",
+            "fieldInJavaBeanMethod": "Publisher",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "date",
+            "fieldType": "DateTime",
+            "fieldNameCapitalized": "Date",
+            "fieldNameUnderscored": "date",
+            "fieldInJavaBeanMethod": "Date",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "language",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Language",
+            "fieldNameUnderscored": "language",
+            "fieldInJavaBeanMethod": "Language",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": true,
+    "fieldsContainDate": false,
+    "changelogDate": "20150502121715",
+    "pagination": "pager",
+    "validation": false
+}
