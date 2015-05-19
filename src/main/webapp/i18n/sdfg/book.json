@@ -1,0 +1,22 @@
+{
+    "libappApp": {
+        "book" : {
+            "home": {
+                "title": "Books",
+                "createLabel": "Create a new Book",
+                "createOrEditLabel": "Create or edit a Book"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Book {{ id }}?"
+            },
+            "detail": {
+                "title": "Book"
+            },
+            "title": "Title",
+            "publisher": "Publisher",
+            "date": "Date",
+            "language": "Language",
+            "author": "author"
+        }
+    }
+}

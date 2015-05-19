@@ -12,6 +12,15 @@ angular.module('libappApp')
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'borrow': {
+                method: 'POST',
+                url: 'api/books/:id/borrow',
+                transformResponse: function (data) {
+                    data = angular.fromJson(data);
+                    data.date = new Date(data.date);
+                    return data;
+                }
+            }
         });
     });

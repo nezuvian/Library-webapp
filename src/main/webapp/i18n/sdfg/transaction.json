@@ -1,0 +1,19 @@
+{
+    "libappApp": {
+        "transaction" : {
+            "home": {
+                "title": "Transactions",
+                "createLabel": "Create a new Transaction",
+                "createOrEditLabel": "Create or edit a Transaction"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Transaction {{ id }}?"
+            },
+            "detail": {
+                "title": "Transaction"
+            },
+            "user": "user",
+            "book": "book"
+        }
+    }
+}

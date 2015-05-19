@@ -9,7 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import top2lz.libapp.security.AuthoritiesConstants;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
@@ -48,6 +50,7 @@ public class AuthorResource {
     /**
      * PUT  /authors -> Updates an existing author.
      */
+    @RolesAllowed(AuthoritiesConstants.ADMIN)
     @RequestMapping(value = "/authors",
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
@@ -92,6 +95,7 @@ public class AuthorResource {
     /**
      * DELETE  /authors/:id -> delete the "id" author.
      */
+    @RolesAllowed(AuthoritiesConstants.ADMIN)
     @RequestMapping(value = "/authors/{id}",
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)

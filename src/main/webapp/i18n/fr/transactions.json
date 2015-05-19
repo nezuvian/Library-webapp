@@ -1,0 +1,20 @@
+{
+    "libappApp": {
+        "transactions" : {
+            "home": {
+                "title": "Transactionss",
+                "createLabel": "Créer un nouveau Transactions",
+                "createOrEditLabel": "Créer ou éditer un Transactions"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Transactions {{ id }} ?"
+            },
+            "detail": {
+                "title": "Transactions"
+            },
+            "User": "User",
+            "Book": "Book"
+        }
+    }
+}
+

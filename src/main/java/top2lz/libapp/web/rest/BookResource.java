@@ -2,7 +2,12 @@ package top2lz.libapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import top2lz.libapp.domain.Book;
+import top2lz.libapp.domain.Transaction;
+import top2lz.libapp.domain.User;
 import top2lz.libapp.repository.BookRepository;
+import top2lz.libapp.repository.TransactionRepository;
+import top2lz.libapp.security.AuthoritiesConstants;
+import top2lz.libapp.service.UserService;
 import top2lz.libapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -30,6 +36,12 @@ public class BookResource {
 
     @Inject
     private BookRepository bookRepository;
+
+    @Inject
+    TransactionRepository transactionRepository;
+
+    @Inject
+    UserService userService;
 
     /**
      * POST  /books -> Create a new book.
@@ -50,6 +62,7 @@ public class BookResource {
     /**
      * PUT  /books -> Updates an existing book.
      */
+    @RolesAllowed(AuthoritiesConstants.ADMIN)
     @RequestMapping(value = "/books",
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
@@ -97,6 +110,7 @@ public class BookResource {
     /**
      * DELETE  /books/:id -> delete the "id" book.
      */
+    @RolesAllowed(AuthoritiesConstants.ADMIN)
     @RequestMapping(value = "/books/{id}",
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -104,5 +118,25 @@ public class BookResource {
     public void delete(@PathVariable Long id) {
         log.debug("REST request to delete Book : {}", id);
         bookRepository.delete(id);
+    }
+
+    /**
+     * Borrow /books/:id/borrow -> borrow a book by a user
+     */
+    @RequestMapping(value = "/books/{id}/borrow",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<String> borrow(@PathVariable Long id) {
+        log.debug("REST request to borrow a Book");
+        Transaction transaction = new Transaction();
+        Book book = bookRepository.findOne(id);
+        User user = userService.getUserWithAuthorities();
+        transaction.setBook(book);
+        transaction.setUser(user);
+
+        transactionRepository.save(transaction);
+
+        return new ResponseEntity<String>("Ok", HttpStatus.OK);
     }
 }

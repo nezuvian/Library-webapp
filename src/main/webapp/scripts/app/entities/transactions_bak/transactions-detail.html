@@ -1,0 +1,38 @@
+
+<div>
+    <h2><span translate="libappApp.transaction.detail.title">Transactions</span> {{transaction.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="libappApp.transaction.User">User</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{transaction.User.firstName}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="libappApp.transaction.Book">Book</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{transaction.Book.title}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="transaction"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

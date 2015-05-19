@@ -1,0 +1,35 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "user",
+            "relationshipNameCapitalized": "User",
+            "relationshipFieldName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "User",
+            "otherEntityField": "firstName"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "book",
+            "relationshipNameCapitalized": "Book",
+            "relationshipFieldName": "book",
+            "otherEntityName": "book",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Book",
+            "otherEntityField": "title"
+        }
+    ],
+    "fields": [],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150514203221",
+    "pagination": "pager",
+    "validation": false
+}
