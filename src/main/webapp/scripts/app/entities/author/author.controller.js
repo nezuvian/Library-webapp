@@ -3,7 +3,7 @@
 angular.module('libappApp')
     .controller('AuthorController', function ($scope, Author, Book) {
         $scope.authors = [];
-        $scope.books = Book.query();
+        $scope.transactions = Book.query();
         $scope.loadAll = function() {
             Author.query(function(result) {
                $scope.authors = result;

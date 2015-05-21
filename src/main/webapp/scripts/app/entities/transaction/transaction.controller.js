@@ -4,7 +4,7 @@ angular.module('libappApp')
     .controller('TransactionController', function ($scope, Transaction, User, Book, ParseLinks) {
         $scope.transactions = [];
         $scope.users = User.query();
-        $scope.books = Book.query();
+        $scope.transactions = Book.query();
         $scope.page = 1;
         $scope.loadAll = function() {
             Transaction.query({page: $scope.page, per_page: 20}, function(result, headers) {

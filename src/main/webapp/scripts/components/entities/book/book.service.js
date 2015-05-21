@@ -15,7 +15,7 @@ angular.module('libappApp')
             'update': { method:'PUT' },
             'borrow': {
                 method: 'POST',
-                url: 'api/books/:id/borrow',
+                url: 'api/transactions/:id/borrow',
                 transformResponse: function (data) {
                     data = angular.fromJson(data);
                     data.date = new Date(data.date);

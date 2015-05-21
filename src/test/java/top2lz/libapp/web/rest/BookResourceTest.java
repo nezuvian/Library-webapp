@@ -85,7 +85,7 @@ public class BookResourceTest {
         int databaseSizeBeforeCreate = bookRepository.findAll().size();
 
         // Create the Book
-        restBookMockMvc.perform(post("/api/books")
+        restBookMockMvc.perform(post("/api/transactions")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(book)))
                 .andExpect(status().isCreated());
@@ -106,8 +106,8 @@ public class BookResourceTest {
         // Initialize the database
         bookRepository.saveAndFlush(book);
 
-        // Get all the books
-        restBookMockMvc.perform(get("/api/books"))
+        // Get all the transactions
+        restBookMockMvc.perform(get("/api/transactions"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(book.getId().intValue())))
@@ -124,7 +124,7 @@ public class BookResourceTest {
         bookRepository.saveAndFlush(book);
 
         // Get the book
-        restBookMockMvc.perform(get("/api/books/{id}", book.getId()))
+        restBookMockMvc.perform(get("/api/transactions/{id}", book.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(book.getId().intValue()))
@@ -138,7 +138,7 @@ public class BookResourceTest {
     @Transactional
     public void getNonExistingBook() throws Exception {
         // Get the book
-        restBookMockMvc.perform(get("/api/books/{id}", Long.MAX_VALUE))
+        restBookMockMvc.perform(get("/api/transactions/{id}", Long.MAX_VALUE))
                 .andExpect(status().isNotFound());
     }
 
@@ -155,7 +155,7 @@ public class BookResourceTest {
         book.setPublisher(UPDATED_PUBLISHER);
         book.setDate(UPDATED_DATE);
         book.setLanguage(UPDATED_LANGUAGE);
-        restBookMockMvc.perform(put("/api/books")
+        restBookMockMvc.perform(put("/api/transactions")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(book)))
                 .andExpect(status().isOk());
@@ -179,7 +179,7 @@ public class BookResourceTest {
 		int databaseSizeBeforeDelete = bookRepository.findAll().size();
 
         // Get the book
-        restBookMockMvc.perform(delete("/api/books/{id}", book.getId())
+        restBookMockMvc.perform(delete("/api/transactions/{id}", book.getId())
                 .accept(TestUtil.APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk());
 

@@ -11,6 +11,11 @@ angular.module('libappApp')
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'forCurrentUser': {
+                method: 'GET',
+                isArray: true,
+                url: 'api/transactions/forCurrentUser'
+            }
         });
     });

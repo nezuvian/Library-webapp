@@ -1,10 +1,14 @@
 package top2lz.libapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.*;
 import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.CascadeType;
+
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,6 +30,7 @@ public class Transaction implements Serializable {
     private User user;
 
     @ManyToOne
+//    @Cascade({CascadeType.PERSIST})
     private Book book;
 
     public Long getId() {

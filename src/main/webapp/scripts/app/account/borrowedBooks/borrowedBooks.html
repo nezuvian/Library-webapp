@@ -1,0 +1,27 @@
+<h2>borrowed books</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Publisher</th>
+            <th>Date</th>
+            <th>Language</th>
+            <th>author</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="transaction in transactions">
+            <td>{{transaction.book.title}}</td>
+            <td>{{transaction.book.publisher}}</td>
+            <td>{{transaction.book.date}}</td>
+            <td>{{transaction.book.language}}</td>
+            <td>{{transaction.book.author.name}}</td>
+            <td>
+                <button class="btn btn-success" ng-click="return(transaction.id)">Return</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

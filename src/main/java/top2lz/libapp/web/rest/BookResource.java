@@ -44,7 +44,7 @@ public class BookResource {
     UserService userService;
 
     /**
-     * POST  /books -> Create a new book.
+     * POST  /transactions -> Create a new book.
      */
     @RequestMapping(value = "/books",
             method = RequestMethod.POST,
@@ -56,11 +56,11 @@ public class BookResource {
             return ResponseEntity.badRequest().header("Failure", "A new book cannot already have an ID").build();
         }
         bookRepository.save(book);
-        return ResponseEntity.created(new URI("/api/books/" + book.getId())).build();
+        return ResponseEntity.created(new URI("/api/transactions/" + book.getId())).build();
     }
 
     /**
-     * PUT  /books -> Updates an existing book.
+     * PUT  /transactions -> Updates an existing book.
      */
     @RolesAllowed(AuthoritiesConstants.ADMIN)
     @RequestMapping(value = "/books",
@@ -77,7 +77,7 @@ public class BookResource {
     }
 
     /**
-     * GET  /books -> get all the books.
+     * GET  /transactions -> get all the transactions.
      */
     @RequestMapping(value = "/books",
             method = RequestMethod.GET,
@@ -87,12 +87,12 @@ public class BookResource {
                                   @RequestParam(value = "per_page", required = false) Integer limit)
         throws URISyntaxException {
         Page<Book> page = bookRepository.findAll(PaginationUtil.generatePageRequest(offset, limit));
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/books", offset, limit);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/transactions", offset, limit);
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
-     * GET  /books/:id -> get the "id" book.
+     * GET  /transactions/:id -> get the "id" book.
      */
     @RequestMapping(value = "/books/{id}",
             method = RequestMethod.GET,
@@ -108,7 +108,7 @@ public class BookResource {
     }
 
     /**
-     * DELETE  /books/:id -> delete the "id" book.
+     * DELETE  /transactions/:id -> delete the "id" book.
      */
     @RolesAllowed(AuthoritiesConstants.ADMIN)
     @RequestMapping(value = "/books/{id}",
@@ -121,7 +121,7 @@ public class BookResource {
     }
 
     /**
-     * Borrow /books/:id/borrow -> borrow a book by a user
+     * Borrow /transactions/:id/borrow -> borrow a book by a user
      */
     @RequestMapping(value = "/books/{id}/borrow",
             method = RequestMethod.POST,

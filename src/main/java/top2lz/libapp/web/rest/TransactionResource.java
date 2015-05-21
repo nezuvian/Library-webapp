@@ -2,7 +2,9 @@ package top2lz.libapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import top2lz.libapp.domain.Transaction;
+import top2lz.libapp.domain.User;
 import top2lz.libapp.repository.TransactionRepository;
+import top2lz.libapp.service.UserService;
 import top2lz.libapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +33,9 @@ public class TransactionResource {
     @Inject
     private TransactionRepository transactionRepository;
 
+    @Inject
+    private UserService userService;
+
     /**
      * POST  /transactions -> Create a new transaction.
      */
@@ -43,6 +48,8 @@ public class TransactionResource {
         if (transaction.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new transaction cannot already have an ID").build();
         }
+        User user = userService.getUserWithAuthorities();
+        transaction.setUser(user);
         transactionRepository.save(transaction);
         return ResponseEntity.created(new URI("/api/transactions/" + transaction.getId())).build();
     }
@@ -104,5 +111,14 @@ public class TransactionResource {
     public void delete(@PathVariable Long id) {
         log.debug("REST request to delete Transaction : {}", id);
         transactionRepository.delete(id);
+    }
+
+    @RequestMapping(value = "/transactions/forCurrentUser",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Transaction>> getAllForCurrentUser() {
+        List<Transaction> transactions = transactionRepository.findAllForCurrentUser();
+        return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
 }

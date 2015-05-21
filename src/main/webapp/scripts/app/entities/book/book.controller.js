@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('libappApp')
-    .controller('BookController', function ($scope, $http, Book, Author, ParseLinks) {
+    .controller('BookController', function ($scope, $http, Book, Author, ParseLinks, Transaction, Principal) {
         $scope.books = [];
         $scope.authors = Author.query();
         $scope.page = 1;
@@ -57,12 +57,11 @@ angular.module('libappApp')
 
         $scope.borrow = function (id) {
             console.log('borrow called');
-            $http.put(
-                '/api/books/' + id + '/borrow',
-                {}
-            )
-            //Book.borrow({id: id}, function (result) {
-            //    console.log(result);
-            //});
+
+            var transaction = {};
+            transaction.book = {};
+            transaction.book.id = id;
+
+            Transaction.update(transaction);
         }
     });
